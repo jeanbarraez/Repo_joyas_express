@@ -28,7 +28,7 @@ export default createQuery; */
 
 const createQuery = async (entity,filters) =>{
     const table = entity.toLowerCase();
-    let query = `SELECT * FROM ${table} WHERE 1 = 1 `;
+    let query = `SELECT * FROM ${table} WHERE` ;
     console.log("filters", filters);
   
     const filterEntries = Object.entries(filters);//esto devuelve un array dentro de un array con las claves(key) y valores de los filtros
@@ -42,7 +42,7 @@ const createQuery = async (entity,filters) =>{
       console.log("value", value);
   
       if(key =='precio_min'){
-       query+= ` AND precio >= $${values.length + 1}`;
+       query+= ` precio >= $${values.length + 1}`;
       }
      else if(key =='precio_max'){
         query += ` AND precio <= $${values.length + 1 }`;

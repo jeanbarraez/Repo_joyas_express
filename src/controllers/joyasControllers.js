@@ -19,7 +19,7 @@ import {
     try {
    const joyas = await getAllJoyasModel();
       const joyasWithHateoas = await prepareHateoas ("joyas", joyas);
-      res.status(200).json({ joyas: joyasWithHateoas });
+      res.status(200).json({ joyasWithHateoas });
     } catch (error) {
       console.log("error", error);
     }
@@ -41,7 +41,7 @@ console.log("req.body", req.query);
   };
 
 
-  export  const getOrderAndLimitjoyas = async (req, res) => {
+  export  const getOrderAndLimitjoya = async (req, res) => {
     try {
       // Extrae los parámetros de orden, límite y página de la solicitud HTTP
       const { order_by, limit, page,item } = req.query;
@@ -49,11 +49,12 @@ console.log("req.body", req.query);
       console.log("req.query", req.query);
       // Llama a la función orderAndLimitTravels con los parámetros extraídos
       const joyas = await getModelorderAndLimitjoya(order_by, limit, page);
+
       const joyasWithHateoas = await prepareHateoas ("joyas", joyas)
-      console.log("joyas", joyasWithHateoas);
+     
      // const paginationData = pagination(joyas, limit,  page);
       // Establece el estado de la respuesta en 200 (OK)
-      res.status(200).json({ joyas: joyasWithHateoas });
+      res.status(200).json(joyasWithHateoas);
     } catch (error) {
       // Si ocurre un error, lo muestra en la consola y devuelve una respuesta con un código de error y un mensaje de error
       console.log("error", error);
