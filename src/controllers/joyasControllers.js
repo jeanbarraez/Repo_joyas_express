@@ -60,7 +60,7 @@ console.log("req.body", req.query);
       console.log("error", error);
       const errorFound = findError(error.code);
       return res
-        .status(errorFound[0].status)
-        .json({ error: errorFound[0].message });
+        .status(errorFound[0]?.status)
+        .json({ error: errorFound[0]?.message });
     }
   }

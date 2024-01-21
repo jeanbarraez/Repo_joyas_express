@@ -30,22 +30,23 @@ export const getAllJoyasModel = async () => {
 
    export const getModelorderAndLimitjoya = async (
     order_by = "stock_ASC",
-    limits = 3,
-    page = 0
+    limit = null,
+    page = null,
   ) => {
     // Desestructura el parámetro order_by en attribute y direction
     const [attribute, direction] = order_by.split("_");//el metodo split separa el atributo y la dirección(id y ASC)
     //el split devuelve un arreglo con el atributo y la dirección.
-  
+
     // Calcula el desplazamiento en función de la página y los límites
-    const offset = page * limits;
+    const offset = page * limit;
   
     // Formatea la consulta con los parámetros proporcionados
+    
     const formattedQuery = format(
-      "SELECT * FROM inventario ORDER BY %s %s LIMIT %s OFFSET %s",
+      `SELECT * FROM inventario ORDER BY %s %s LIMIT %L OFFSET %s`,
       attribute,
       direction,
-      limits,
+      limit,
       offset
     );
     // Muestra la consulta formateada en la consola
