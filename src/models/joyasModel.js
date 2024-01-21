@@ -13,13 +13,12 @@ export const getAllJoyasModel = async () => {
 
  export const getModeljoyaswithFilter = async (filters) => {
     
-    //    console.log("prueba funcion",createQuery("inventario", filters))
+    
        
         const {query, values} = await createQuery("inventario", filters);
-       //const values = createQuery("inventario", filters);
+       
         
-       // console.log("resultado query de prueba",query);
-       // console.log("resultado  prueba", values);
+       
         const result = await pool.query(query, values)
        
         //console.log("result",result)
@@ -33,14 +32,13 @@ export const getAllJoyasModel = async () => {
     limit = null,
     page = null,
   ) => {
-    // Desestructura el parámetro order_by en attribute y direction
-    const [attribute, direction] = order_by.split("_");//el metodo split separa el atributo y la dirección(id y ASC)
-    //el split devuelve un arreglo con el atributo y la dirección.
+    
+    const [attribute, direction] = order_by.split("_");
 
-    // Calcula el desplazamiento en función de la página y los límites
+    
     const offset = page * limit;
   
-    // Formatea la consulta con los parámetros proporcionados
+    
     
     const formattedQuery = format(
       `SELECT * FROM inventario ORDER BY %s %s LIMIT %L OFFSET %s`,
@@ -49,12 +47,12 @@ export const getAllJoyasModel = async () => {
       limit,
       offset
     );
-    // Muestra la consulta formateada en la consola
+   
     console.log("query: ", formattedQuery);
-    // Realiza la consulta a la base de datos utilizando la consulta formateada
+    
     const response = await pool.query(formattedQuery);
-    // Muestra la respuesta en la consola
+   
     console.log("response", response);
-    // Devuelve las filas de la respuesta
+   
     return response.rows;
   }

@@ -1,9 +1,6 @@
 import express from "express";
 import {
-  //getAllJoyas,
-  //getJoyasLimit,
-  //getOrderAndLimitjoya,
-  //joyasWithPagination,
+  
   filterControllerjoyas,
  getControllerjoyasWithHateoas,
  getOrderAndLimitjoya,
@@ -11,14 +8,9 @@ import {
  
 } from "../src/controllers/joyasControllers.js";
 const router = express.Router();
-
-//router.get("/joyas",getAllJoyas );
-//router.get("/joyas_with_limit",getJoyasLimit);
 router.get("/joyas", getOrderAndLimitjoya,);
-//router.get("/joyas_with_pagination", joyasWithPagination);
 router.get("/joyas_filter",filterControllerjoyas);
 router.get("/joyas_with_hateoas", getControllerjoyasWithHateoas);
-//router.get("/joyas/:id", getJoyasById);
 
-
-export default router;
+export default 
+router;

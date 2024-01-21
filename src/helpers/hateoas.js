@@ -1,5 +1,5 @@
 export const prepareHateoas = async (entity, data) => {
-  //const totalStock = 0;
+  
   const totalJoyas = data.length;
 
   const results = data.map((x) => {
